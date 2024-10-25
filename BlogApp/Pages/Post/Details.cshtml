@@ -1,0 +1,14 @@
+﻿@page
+@model BlogApp.Pages.Post.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Post.PostId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

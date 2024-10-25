@@ -1,0 +1,63 @@
+﻿@page
+@model BlogApp.Pages.Blog.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-page="./Create" class="btn btn-primary">Create a Blog</a>
+
+@*searching*@
+<form method="get" class="input-group mb-3" id="search_form ">
+    <input type="text" name="searchQuery" onkeyup="greet()" class="form-control" id="input_search" placeholder="search..." />
+    <button class="btn btn-outline-secondary" type="submit" id="btn_search">Search</button>
+</form>
+
+@if(TempData["blog-create"]is not null)
+{
+    
+}
+
+    @{
+        if(Model.blogs.Any())
+        {
+            
+        }
+        else
+        {
+            <h2>No blog found</h2>            
+        }
+    }
+
+
+
+
+@foreach(var obj in Model.blogs){
+<div class="card mt-4">
+    <div class="card-header">
+        @obj.Title
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@obj.Rating</h5>
+        <p class="card-text">@obj.Description</p>
+        <a asp-page="Edit" asp-route-id="@obj.BlogId" class="btn btn-warning">Edit</a>
+        <a asp-page="Delete" asp-route-id="@obj.BlogId" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+}
+
+
+@section Scripts{
+    <script>
+        let search = document.getElementById("input_search")
+        let btn = document.getElementById("btn_search")
+        let form = document.getElementById("search_form")
+
+       function greet(){
+            if(search.value.length >= 3){
+                //console.log("hello")
+                btn.click()
+            }
+        }
+    </script>
+}

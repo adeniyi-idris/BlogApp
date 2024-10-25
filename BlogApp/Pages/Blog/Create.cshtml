@@ -1,0 +1,38 @@
+﻿@page
+@model BlogApp.Pages.Blog.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form  method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.blogs.Title" class="form-label">Titlel</label>
+        <input asp-for="@Model.blogs.Title" type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.blogs.Description" class="form-label">Description</label>
+        <textarea asp-for="@Model.blogs.Description"  type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"><</textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.blogs.Rating" class="form-label">Rating</label>
+        <input type="number" asp-for="@Model.blogs.Rating" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+
+
+@*multiple page handlers*@
+<h2>Form 2</h2>
+<form method="post" asp-page-handler="Finish">
+    <input type="text" name="searchQuery"  class="form-control"  placeholder="search..." />
+    <button type="submit" class="btn btn-primary">Finish</button>
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
